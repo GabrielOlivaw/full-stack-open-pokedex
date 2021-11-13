@@ -33,3 +33,5 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "warm-woodland-49722"
           heroku_email: "gabrodzt@gmail.com"
+          healthcheck: "https://warm-woodland-49722.herokuapp.com/health"
+          checkstring: "ok"
