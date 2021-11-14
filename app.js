@@ -6,12 +6,13 @@ const PORT = process.env.PORT || 5000
 
 app.use(express.static('dist'))
 
+// Heroku development health check
 app.get('/health', (req, res) => {
   res.send('ok')
 })
 
 app.get('/version', (req, res) => {
-  res.send('1')
+  res.send('10')
 })
 
 app.listen(PORT, () => {
