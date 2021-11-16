@@ -42,6 +42,7 @@ jobs:
           rollbackonhealthcheckfailed: true
 
   add_new_version:
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
       - name: Bump version and push tag
