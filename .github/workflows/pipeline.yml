@@ -47,7 +47,11 @@ jobs:
     runs-on: ubuntu-18.04
     needs: simple_deployment_pipeline
     steps:
-      - uses: actions/checkout@v2
+      - name: "Checkout action"
+        env:
+          COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
+        if: ${{ github.event_name == 'push' && !contains(env.COMMIT_MESSAGES, '#skip') }}
+        uses: actions/checkout@v2
       - name: Bump version and push tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -55,7 +59,3 @@ jobs:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         if: ${{ github.event_name == 'push' && !contains(env.COMMIT_MESSAGES, '#skip') }}
         uses: anothrNick/github-tag-action@1.33.0
-      - name: GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
