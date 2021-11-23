@@ -12,4 +12,4 @@ jobs:
         uses: jtalk/url-health-check-action@v2
         with:
         # Check main page and single pokemon page
-          url: https://warm-woodland-49722.herokuapp.com/|https://warm-woodland-49722.herokuapp.com/pokemon/bulbasaur
+          url: https://warm-woodland-49722.herokuapp.com/
